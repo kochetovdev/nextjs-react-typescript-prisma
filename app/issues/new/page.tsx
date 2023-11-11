@@ -16,6 +16,7 @@ import Spinner from "@/app/components/Spinner";
 type IssueForm = z.infer<typeof createIssueSchema>;
 
 const NewIssuePage = () => {
+
   const {
     register,
     control,
@@ -24,6 +25,7 @@ const NewIssuePage = () => {
   } = useForm<IssueForm>({
     resolver: zodResolver(createIssueSchema),
   });
+
   const router = useRouter();
   const [error, setError] = useState("");
   const [isSubmiting, setSubmiting] = useState(false);
