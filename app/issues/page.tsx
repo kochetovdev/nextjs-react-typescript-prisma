@@ -1,12 +1,12 @@
 import prisma from "@/prisma/migrations/client";
 import { Table } from "@radix-ui/themes";
-import IssueActons from "./IssueActons";
 import { IssueStatusBadge, Link } from "../components";
+import IssueActons from "./IssueActons";
 
 const IssuesPage = async () => {
   const issues = await prisma.issue.findMany();
   return (
-    <div className="p-5">
+    <div>
       <IssueActons />
       <Table.Root variant="surface">
         <Table.Header>

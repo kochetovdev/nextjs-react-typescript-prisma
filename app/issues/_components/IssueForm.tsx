@@ -8,19 +8,15 @@ import { Issue } from "@prisma/client";
 import { Button, Callout, TextField } from "@radix-ui/themes";
 import axios from "axios";
 import "easymde/dist/easymde.min.css";
-import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import SimpleMDE from 'react-simplemde-editor';
 import { z } from "zod";
 
 type IssueFormData = z.infer<typeof issueSchema>;
 
 const IssueForm = ({ issue }: { issue?: Issue }) => {
-  const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
-    ssr: false,
-  });
-
   const {
     register,
     control,
@@ -53,11 +49,11 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
   return (
     <div className="max-w-xl">
       {error && (
-        <Callout.Root className="ml-5">
-          <Callout.Text color="red">{error}</Callout.Text>
+        <Callout.Root color="red" className="mb-5">
+          <Callout.Text>{error}</Callout.Text>
         </Callout.Root>
       )}
-      <form className="space-y-3 p-5" onSubmit={onSubmit}>
+      <form className="space-y-3" onSubmit={onSubmit}>
         <TextField.Root>
           <TextField.Input
             defaultValue={issue?.title}
