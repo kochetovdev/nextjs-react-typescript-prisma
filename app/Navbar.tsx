@@ -3,14 +3,13 @@
 import classNames from "classnames";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
 import { AiFillBug } from "react-icons/ai";
 
 const Navbar = () => {
   const currentPath = usePathname();
 
   const Links = [
-    { label: "Dashboard", href: "/dashboard" },
+    { label: "Dashboard", href: "/" },
     { label: "Issues", href: "/issues" },
   ];
 
