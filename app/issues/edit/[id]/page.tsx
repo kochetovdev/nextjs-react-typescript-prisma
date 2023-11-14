@@ -11,7 +11,7 @@ interface Props {
 
 const IssueForm = dynamic(() => import("@/app/issues/_components/IssueForm"), {
   ssr: false,
-  loading: () => <IssueFormSkeleton />
+  loading: () => <IssueFormSkeleton />,
 });
 
 const EditIssuePage = async ({ params }: Props) => {
