@@ -1,4 +1,4 @@
-import prisma from "@/prisma/migrations/client";
+import prisma from "@/prisma/client";
 import { Table } from "@radix-ui/themes";
 import { IssueStatusBadge, Link } from "../../components";
 import IssueActons from "./IssueActons";
