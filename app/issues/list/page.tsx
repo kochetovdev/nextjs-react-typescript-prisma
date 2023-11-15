@@ -7,7 +7,7 @@ import { IssueStatusBadge, Link } from "../../components";
 import IssueActons from "./IssueActons";
 
 interface Props {
-  searchParams: { status: Status, orderBy: keyof Issue };
+  searchParams: { status: Status; orderBy: keyof Issue };
 }
 
 const IssuesPage = async ({ searchParams }: Props) => {
@@ -26,10 +26,17 @@ const IssuesPage = async ({ searchParams }: Props) => {
     ? searchParams.status
     : undefined;
 
+  const orderBy = columns
+    .map((column) => column.value)
+    .includes(searchParams.orderBy)
+    ? { [searchParams.orderBy]: "asc" }
+    : undefined;
+
   const issues = await prisma.issue.findMany({
     where: {
       status,
     },
+    orderBy,
   });
   return (
     <div>
